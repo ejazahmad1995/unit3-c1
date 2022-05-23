@@ -1,33 +1,26 @@
-function append(){
-    let data=JSON.parse(localStorage.getItem("products")) || [];
+var x=JSON.parse(localStorage.getItem("products"));
+console.log(x);
+display(x);
+function display(x){
+    x.forEach(function(elem, index){
+        var a=document.createElement("h2");
+        a.innertext=elem.type;
+        var b=document.createElement("h3");
+        b.innertext=elem.desc;
+        var c=document.createElement("h4");
+        c.innertext=elem.price;
+        var d=document.createElement("img");
+        d.setAttribute("src", elem.image)
 
-    let container=document.createElement("container");
+        let btn=document.createElement("button");
+        btn.innerText="Remove Product";
+        btn.addEventListener("click", function(){
+            remove(index);
+        });
+        var y=document.createElement("div")
+        y.append(d,a,b,c,btn)
 
-    data.forEach(function(elem){
-        let div=document.getElement("all_products");
-
-        let img=document.createElement("div");
-        img.src=elem.image;
-
-
-
-        let btn=document.getElementById("remove_product");
-        btn.innerText="Remove";
-
-        btn.setAttribute('click',function(){remove(index);});
-
-        div.append(img,btn);
-        container.append(div);
-
-        
-
-        
+        var z=document.querySelector("#all_products")
+         z.append(y);
     });
-    append();
-
-    function remove(index){
-        let data=JSON.parse(localStorage.getItem("products")) ||[];
-    }
-    
-
 }
